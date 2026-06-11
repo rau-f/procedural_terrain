@@ -28,6 +28,17 @@ if (NOT glad_FOUND)
     FetchContent_MakeAvailable(glad)
 endif()
 
+# Fetch GLM if not installed
+find_package(glm QUIET)
+if (NOT glm_FOUND)
+    FetchContent_Declare(
+        glm
+        GIT_REPOSITORY https://github.com/g-truc/glm.git
+        GIT_TAG 0.9.9.8
+    )
+    FetchContent_MakeAvailable(glm)
+endif()
+
 cmake_policy(SET CMP0072 NEW)
 set(OpenGL_GL_PREFERENCE "GLVND")
 
@@ -59,4 +70,4 @@ target_include_directories(procdural_terrain PRIVATE include)
 include_directories(${CMAKE_SOURCE_DIR}/src/include)
 
 # Link libraries
-target_link_libraries(procdural_terrain glfw OpenGL::GL)
+target_link_libraries(procdural_terrain glfw OpenGL::GL glm::glm)
