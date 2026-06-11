@@ -1,5 +1,4 @@
 #include "include/Camera.hpp"
-#include <Camera.hpp>
 #include <GLFW/glfw3.h>
 #include <iostream>
 

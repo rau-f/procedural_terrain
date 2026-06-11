@@ -28,22 +28,22 @@ private:
 
     std::string faces1[6] =
     {
-        "../res/textures/skybox/1.png",
-        "../res/textures/skybox/2.png",
-        "../res/textures/skybox/3.png",
-        "../res/textures/skybox/4.png",
-        "../res/textures/skybox/5.png",
-        "../res/textures/skybox/6.png"
+        "res/textures/skybox/1.png",
+        "res/textures/skybox/2.png",
+        "res/textures/skybox/3.png",
+        "res/textures/skybox/4.png",
+        "res/textures/skybox/5.png",
+        "res/textures/skybox/6.png"
     };
 
     std::string faces2[6] =
     {
-        "../res/textures/skybox/px.png",
-        "../res/textures/skybox/nx.png",
-        "../res/textures/skybox/py.png",
-        "../res/textures/skybox/ny.png",
-        "../res/textures/skybox/pz.png",
-        "../res/textures/skybox/nz.png"
+        "res/textures/skybox/px.png",
+        "res/textures/skybox/nx.png",
+        "res/textures/skybox/py.png",
+        "res/textures/skybox/ny.png",
+        "res/textures/skybox/pz.png",
+        "res/textures/skybox/nz.png"
     };
 
     float vertices[108] = 

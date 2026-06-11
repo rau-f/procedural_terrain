@@ -1,5 +1,4 @@
 #include "include/Skybox.hpp"
-#include "Skybox.hpp"
 
 
 
@@ -36,7 +35,7 @@ Skybox::Skybox()
 
 void Skybox::loadToGPU()
 {
-    shader.CreateShader("../res/shaders/skybox.vert", "../res/shaders/skybox.frag");
+    shader.CreateShader("res/shaders/skybox.vert", "res/shaders/skybox.frag");
     shader.Bind();
     shader.SetInt("skybox", 0);
 

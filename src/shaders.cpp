@@ -1,5 +1,5 @@
 #include "include/shaders.h"
-#include "shaders.h"
+#include <vector>
 
 
 std::string getFileContent(const char* fileName)
@@ -81,14 +81,14 @@ void Shader::CompileStatus(unsigned int shader)
         int length;
         GLCall(glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &length));
 
-        char* message = (char*)alloca(length);
-        GLCall(glGetShaderInfoLog(shader, length, &length, message));
+        std::vector<char> message(length);
+        GLCall(glGetShaderInfoLog(shader, length, &length, message.data()));
 
         int type;
         GLCall(glGetShaderiv(shader, GL_SHADER_TYPE, &type));
 
         std::cerr << "Failed to compile " << (type == GL_VERTEX_SHADER ? "vertex" : "fragment") << " shader!" << std::endl;
-        std::cerr << message << std::endl;
+        std::cerr << message.data() << std::endl;
     }
 }
 

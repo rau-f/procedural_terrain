@@ -53,7 +53,7 @@ int main()
     glfwSwapInterval(1);
 
     Terrain terrain(1200, 1200);
-    terrain.getShader().CreateShader("../res/shaders/default.vert", "../res/shaders/default.frag");
+    terrain.getShader().CreateShader("res/shaders/default.vert", "res/shaders/default.frag");
     terrain.sendToGPU();
 
     Skybox skybox;

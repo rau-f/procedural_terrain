@@ -5,8 +5,11 @@ project(procedural_terrain)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-cmake_policy(SET CMP0072 NEW)
-set(OpenGL_GL_PREFERENCE "GLVND")
+# GLVND preference is Linux-only; harmless but unnecessary on Windows
+if (UNIX)
+    cmake_policy(SET CMP0072 NEW)
+    set(OpenGL_GL_PREFERENCE "GLVND")
+endif()
 
 include(FetchContent)
 set(FETCHCONTENT_QUIET OFF)
@@ -92,3 +95,17 @@ include_directories(${CMAKE_SOURCE_DIR}/src/include)
 
 # Link libraries
 target_link_libraries(procedural_terrain glfw OpenGL::GL glm::glm)
+
+# --------------------------------------------------------------------------
+# Copy resources next to the executable so paths work on every platform
+# --------------------------------------------------------------------------
+add_custom_command(TARGET procedural_terrain POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    "${CMAKE_SOURCE_DIR}/res" "$<TARGET_FILE_DIR:procedural_terrain>/res"
+    COMMENT "Copying res/ to output directory"
+)
+
+# Set Visual Studio debugger working directory to the exe location
+set_target_properties(procedural_terrain PROPERTIES
+    VS_DEBUGGER_WORKING_DIRECTORY "$<TARGET_FILE_DIR:procedural_terrain>"
+)
